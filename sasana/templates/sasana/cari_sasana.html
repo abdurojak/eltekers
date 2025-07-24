@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Temukan Sasana Terdekat</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,12 +25,12 @@
 
                     hasil.data.forEach(item => {
                         const el = document.createElement('li');
-                        el.className = "border rounded-xl shadow-sm overflow-hidden w-full sm:w-64";
+                        el.className = "border rounded-xl shadow-sm overflow-hidden bg-white";
                         el.innerHTML = `
-                            <img src="${item.gambar}" alt="foto ${item.nama}" class="w-full h-40 object-cover">
+                            <img src="${item.gambar}" alt="foto ${item.nama}" class="w-full aspect-video object-cover">
                             <div class="p-4">
                                 <strong class="block text-lg font-semibold text-gray-800">${item.nama}</strong>
-                                <p class="text-gray-500 text-sm">${item.alamat}</p>
+                                <p class="text-gray-500 text-sm mt-1 leading-relaxed text-justify">${item.alamat}</p>
                                 <p class="text-gray-400 text-sm">${item.jarak} km</p>
                                 <a href="${item.link_gmap}" target="_blank" class="text-blue-600 text-sm hover:underline">Lihat di Google Maps</a>
                             </div>
@@ -57,14 +58,14 @@
         window.onload = cariTerdekat;
     </script>
 </head>
-<body class="bg-gray-50 min-h-screen px-4 py-8 font-sans">
+<body class="bg-gray-50 min-h-screen px-4 sm:px-6 py-6 font-sans text-base">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">Temukan Sasana Terdekat</h1>
-        <p class="text-gray-600 mb-6">Cari lokasi sasana Eltekers Indonesia terdekat dan mulai perjalanan terapi Anda sekarang!</p>
+        <h1 class="text-2xl font-bold text-gray-800 mb-2">Temukan Sasana Terdekat</h1>
+        <p class="text-gray-600 mb-6 text-justify">Cari lokasi sasana Eltekers Indonesia terdekat dan mulai perjalanan terapi Anda sekarang!</p>
         <input type="text" id="searchBox" placeholder="Cari sasana berdasarkan lokasi, kota atau nama..." oninput="filterHasil()" class="w-full border rounded-md px-4 py-3 mb-6 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
         
         <h2 class="text-xl font-semibold mb-4 text-gray-700">Sasana Terdekat</h2>
-        <ul id="hasil" class="flex flex-wrap gap-4">
+        <ul id="hasil" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <!-- Kartu hasil akan muncul di sini -->
         </ul>
     </div>
